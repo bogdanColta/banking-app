@@ -1,0 +1,21 @@
+<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="amount">Amount:</label>
+    <input id="amount" formControlName="amount" type="text" />
+    <div *ngIf="transactionForm.get('amount')?.invalid && transactionForm.get('amount')?.touched">
+      <small *ngIf="transactionForm.get('amount')?.errors?.['required']">Amount is required.</small>
+      <small *ngIf="transactionForm.get('amount')?.errors?.['pattern']">Amount must be a number.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="iban">IBAN:</label>
+    <input id="iban" formControlName="iban" type="text" />
+    <div *ngIf="transactionForm.get('iban')?.invalid && transactionForm.get('iban')?.touched">
+      <small *ngIf="transactionForm.get('iban')?.errors?.['required']">IBAN is required.</small>
+      <small *ngIf="transactionForm.get('iban')?.errors?.['pattern']">IBAN must be alphanumeric.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="transactionForm.invalid">Submit</button>
+</form>

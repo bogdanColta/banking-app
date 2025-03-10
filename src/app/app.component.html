@@ -1,8 +1,14 @@
-<a routerLink = 'login'> Log in</a><br>
-<a routerLink = 'insights'> Insights</a><br>
-<a routerLink = 'main'> Main</a><br>
-<a routerLink = 'product'> Product</a><br>
-<a routerLink = 'settings'> Settings</a><br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="main">Main</a>
+      <a class="nav-item nav-link" routerLink="insights">Insights</a>
+      <a class="nav-item nav-link" routerLink="product">Products</a>
+      <a class="nav-item nav-link" routerLink="transactions">Transactions</a>
+      <a class="nav-item nav-link" routerLink="settings">Settings</a>
+    </div>
+  </div>
+</nav>
 
 <router-outlet />
 
