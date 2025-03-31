@@ -1,20 +1,53 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Inject, PLATFORM_ID} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'Basic Ym9nZGFuQGdtYWlsLmNvbToxMjM0' // Replace YOUR_TOKEN_HERE with the actual token
-  });
+  private headers: HttpHeaders;
   private url = 'http://localhost:8080/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'XSRF-TOKEN': this.getCsfrToken(),
+    });
+  }
+
+  getCsfrToken() {
+    let token = "";
+    if (isPlatformBrowser(this.platformId)) {
+      document.cookie.split(';').forEach((cookie) => {
+        const [name, value] = cookie.split('=').map(c => c.trim());
+        if (name === 'XSRF-TOKEN') {
+          token = value;
+        }
+      });
+    }
+    return token;
+  }
 
   getTransactions(): Observable<any> {
-    return this.http.get(this.url + 'transactions', { headers: this.headers });
+    return this.http.get(this.url + 'transactions');
+  }
+
+  postTransaction(data: any): Observable<any> {
+    return this.http.post(this.url + 'transactions', data);
+  }
+
+  setHeader(name: string, value: string): void {
+    this.headers.set(name, value);
+    console.log(this.headers);
+  }
+
+  login(authHeader: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': authHeader
+    });
+    return this.http.get(this.url + 'users/'+'login', {headers});
   }
 }

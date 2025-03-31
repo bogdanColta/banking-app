@@ -9,13 +9,35 @@
   </div>
 
   <div>
-    <label for="iban">IBAN:</label>
-    <input id="iban" formControlName="iban" type="text" />
-    <div *ngIf="transactionForm.get('iban')?.invalid && transactionForm.get('iban')?.touched">
-      <small *ngIf="transactionForm.get('iban')?.errors?.['required']">IBAN is required.</small>
-      <small *ngIf="transactionForm.get('iban')?.errors?.['pattern']">IBAN must be alphanumeric.</small>
+    <label for="receiverIBAN">IBAN:</label>
+    <input id="receiverIBAN" formControlName="receiverIBAN" type="text" />
+    <div *ngIf="transactionForm.get('receiverIBAN')?.invalid && transactionForm.get('receiverIBAN')?.touched">
+      <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['required']">IBAN is required.</small>
+      <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['pattern']">IBAN must be alphanumeric.</small>
     </div>
   </div>
 
   <button type="submit" [disabled]="transactionForm.invalid">Submit</button>
 </form>
+
+<div *ngIf="data">
+  <h3>Transaction Data</h3>
+  <table class="transaction-table">
+    <thead>
+    <tr>
+      <th>Amount</th>
+      <th>IBAN of Sender</th>
+      <th>IBAN of Receiver</th>
+      <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let transaction of data">
+      <td>{{ transaction.amount }}</td>
+      <td>{{ transaction.senderIBAN }}</td>
+      <td>{{ transaction.receiverIBAN }}</td>
+      <td>{{ transaction.date }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
