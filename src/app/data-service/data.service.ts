@@ -1,7 +1,8 @@
-import {Injectable, Inject, PLATFORM_ID} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {isPlatformBrowser} from '@angular/common';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable, tap} from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class DataService {
   private headers: HttpHeaders;
   private url = 'http://localhost:8080/';
 
-  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object, private router: Router) {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'XSRF-TOKEN': this.getCsfrToken(),
@@ -48,6 +49,14 @@ export class DataService {
       'Content-Type': 'application/json',
       'Authorization': authHeader
     });
-    return this.http.get(this.url + 'users/'+'login', {headers});
+    return this.http.get(this.url + 'customers/login', { headers }).pipe(
+      tap(() => {
+        this.router.navigate(['/main']);
+      })
+    );
+  }
+
+  getBankAccounts(): Observable<any> {
+    return this.http.get(this.url + 'customers/bankaccounts');
   }
 }

@@ -45,3 +45,9 @@ small {
 .transaction-table tr:hover {
   background-color: #ddd;
 }
+
+.input-field {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}

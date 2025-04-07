@@ -1,7 +1,7 @@
 <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="amount">Amount:</label>
-    <input id="amount" formControlName="amount" type="text" />
+    <input id="amount" formControlName="amount" type="text" class="input-field" />
     <div *ngIf="transactionForm.get('amount')?.invalid && transactionForm.get('amount')?.touched">
       <small *ngIf="transactionForm.get('amount')?.errors?.['required']">Amount is required.</small>
       <small *ngIf="transactionForm.get('amount')?.errors?.['pattern']">Amount must be a number.</small>
@@ -9,11 +9,21 @@
   </div>
 
   <div>
-    <label for="receiverIBAN">IBAN:</label>
-    <input id="receiverIBAN" formControlName="receiverIBAN" type="text" />
+    <label for="senderIBAN">Sender IBAN:</label>
+    <select id="senderIBAN" formControlName="senderIBAN" class="input-field">
+      <option *ngFor="let iban of ibans" [value]="iban">{{ iban }}</option>
+    </select>
+    <div *ngIf="transactionForm.get('senderIBAN')?.invalid && transactionForm.get('senderIBAN')?.touched">
+      <small *ngIf="transactionForm.get('senderIBAN')?.errors?.['required']">Sender IBAN is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="receiverIBAN">Receiver IBAN:</label>
+    <input id="receiverIBAN" formControlName="receiverIBAN" type="text" class="input-field" />
     <div *ngIf="transactionForm.get('receiverIBAN')?.invalid && transactionForm.get('receiverIBAN')?.touched">
-      <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['required']">IBAN is required.</small>
-      <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['pattern']">IBAN must be alphanumeric.</small>
+      <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['required']">Receiver IBAN is required.</small>
+      <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['pattern']">Receiver IBAN must be alphanumeric.</small>
     </div>
   </div>
 

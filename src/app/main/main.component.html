@@ -1,0 +1,8 @@
+<div>
+  <h3>Bank Accounts</h3>
+  <ul>
+    <li *ngFor="let account of bankAccounts">
+      Account: {{ account.iban }} - Balance: {{ account.balance | currency }}
+    </li>
+  </ul>
+</div>
