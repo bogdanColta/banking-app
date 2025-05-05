@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Transactions</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()" class="card p-4 shadow-sm">
+        <div class="mb-3">
+          <label for="amount" class="form-label">Amount:</label>
+          <input id="amount" formControlName="amount" type="text" class="form-control" />
+          <div *ngIf="transactionForm.get('amount')?.invalid && transactionForm.get('amount')?.touched" class="text-danger">
+            <small *ngIf="transactionForm.get('amount')?.errors?.['required']">Amount is required.</small>
+            <small *ngIf="transactionForm.get('amount')?.errors?.['pattern']">Amount must be a number.</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="senderIBAN" class="form-label">Sender IBAN:</label>
+          <select id="senderIBAN" formControlName="senderIBAN" class="form-select">
+            <option *ngFor="let iban of ibans" [value]="iban">{{ iban }}</option>
+          </select>
+          <div *ngIf="transactionForm.get('senderIBAN')?.invalid && transactionForm.get('senderIBAN')?.touched" class="text-danger">
+            <small>Sender IBAN is required.</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="receiverIBAN" class="form-label">Receiver IBAN:</label>
+          <input id="receiverIBAN" formControlName="receiverIBAN" type="text" class="form-control" />
+          <div *ngIf="transactionForm.get('receiverIBAN')?.invalid && transactionForm.get('receiverIBAN')?.touched" class="text-danger">
+            <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['required']">Receiver IBAN is required.</small>
+            <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['pattern']">Receiver IBAN must be alphanumeric.</small>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="transactionForm.invalid" class="btn btn-primary w-100">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

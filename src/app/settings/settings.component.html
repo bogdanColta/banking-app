@@ -1,19 +1,22 @@
-<div class="settings-container">
-  <h2>Profile</h2>
-  <div class="profile">
-    <p>Name: {{ userName }}</p>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Settings</h2>
+  <div class="card p-3 shadow-sm">
+    <h3>Profile</h3>
+    <p><strong>Name:</strong> {{ userName }}</p>
   </div>
 
-  <h3>Settings</h3>
-  <ul class="settings-list">
-    <li><a routerLink="/personal-details">Personal Details</a></li>
-    <li><a routerLink="/documents">Documents</a></li>
-    <li><a routerLink="/access-security-privacy">Access Security and Privacy</a></li>
-    <li><a routerLink="/payment-accounts">Payment Accounts</a></li>
-    <li><a routerLink="/debit-cards">Debit Cards</a></li>
-    <li><a routerLink="/credit-cards">Credit Cards</a></li>
-    <li><a routerLink="/notifications">Notifications</a></li>
-  </ul>
+  <div class="mt-4">
+    <h3>Settings</h3>
+    <ul class="list-group">
+      <li class="list-group-item"><a routerLink="/personal-details" class="text-decoration-none">Personal Details</a></li>
+      <li class="list-group-item"><a routerLink="/documents" class="text-decoration-none">Documents</a></li>
+      <li class="list-group-item"><a routerLink="/access-security-privacy" class="text-decoration-none">Access Security and Privacy</a></li>
+      <li class="list-group-item"><a routerLink="/payment-accounts" class="text-decoration-none">Payment Accounts</a></li>
+      <li class="list-group-item"><a routerLink="/debit-cards" class="text-decoration-none">Debit Cards</a></li>
+      <li class="list-group-item"><a routerLink="/credit-cards" class="text-decoration-none">Credit Cards</a></li>
+      <li class="list-group-item"><a routerLink="/notifications" class="text-decoration-none">Notifications</a></li>
+    </ul>
+  </div>
 
-  <button (click)="logout()">Log Out</button>
+  <button (click)="logout()" class="btn btn-danger w-100 mt-4">Log Out</button>
 </div>

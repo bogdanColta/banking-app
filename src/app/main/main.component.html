@@ -1,8 +1,15 @@
-<div>
-  <h3>Bank Accounts</h3>
-  <ul>
-    <li *ngFor="let account of bankAccounts">
-      Account: {{ account.iban }} - Balance: {{ account.balance | currency }}
-    </li>
-  </ul>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Bank Accounts</h2>
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let account of bankAccounts">
+      <div class="card shadow-sm" (click)="viewAccountDetails(account.iban)" style="cursor: pointer;">
+        <div class="card-body">
+          <h5 class="card-title">Account: {{ account.iban }}</h5>
+          <p class="card-text">
+            <strong>Balance:</strong> {{ account.balance | currency }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

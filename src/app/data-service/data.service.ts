@@ -63,4 +63,8 @@ export class DataService {
   getCustomerData(): Observable<any> {
     return this.http.get(this.url + 'customers');
   }
+
+  getTransactionById(id: any): Observable<any> {
+    return this.http.get(this.url + 'transactions/transaction?id=' + id);
+  }
 }

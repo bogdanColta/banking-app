@@ -11,27 +11,7 @@ import {NgIf} from '@angular/common';
     ReactiveFormsModule,
     NgIf
   ],
-  template: `
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="username">Username:</label>
-        <input id="username" formControlName="username" type="text" />
-        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-          <small *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</small>
-        </div>
-      </div>
-
-      <div>
-        <label for="password">Password:</label>
-        <input id="password" formControlName="password" type="password" />
-        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-          <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
-        </div>
-      </div>
-
-      <button type="submit" [disabled]="loginForm.invalid">Login</button>
-    </form>
-  `,
+  templateUrl: `./login.component.html`,
   styles: []
 })
 export class LoginComponent {

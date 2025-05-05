@@ -1,20 +1,39 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private authToken: string | null = null;
+  private tokenKey = 'authToken';
+
+  private isLocalStorageAvailable(): boolean {
+    try {
+      return typeof localStorage !== 'undefined' && localStorage !== null;
+    } catch {
+      return false;
+    }
+  }
 
   setToken(token: string): void {
-    this.authToken = token;
+    if (this.isLocalStorageAvailable()) {
+      localStorage.setItem(this.tokenKey, token);
+    }
   }
 
   getToken(): string | null {
-    return this.authToken;
+    if (this.isLocalStorageAvailable()) {
+      return localStorage.getItem(this.tokenKey) || null;
+    }
+    return null;
   }
 
   clearToken(): void {
-    this.authToken = null;
+    if (this.isLocalStorageAvailable()) {
+      localStorage.removeItem(this.tokenKey);
+    }
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
   }
 }
