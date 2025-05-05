@@ -31,8 +31,8 @@ export class DataService {
     return token;
   }
 
-  getTransactions(): Observable<any> {
-    return this.http.get(this.url + 'transactions');
+  getTransactions(param: any): Observable<any> {
+    return this.http.get(this.url + 'transactions?iban=' + param);
   }
 
   postTransaction(data: any): Observable<any> {
@@ -58,5 +58,9 @@ export class DataService {
 
   getBankAccounts(): Observable<any> {
     return this.http.get(this.url + 'customers/bankaccounts');
+  }
+
+  getCustomerData(): Observable<any> {
+    return this.http.get(this.url + 'customers');
   }
 }

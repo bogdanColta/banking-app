@@ -28,16 +28,6 @@ export class TransactionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataService.getTransactions().subscribe(
-      (response) => {
-        this.data = response;
-        console.log('Data fetched successfully', this.data);
-      },
-      (error) => {
-        console.error('Error fetching data', error);
-      }
-    );
-
     this.dataService.getBankAccounts().subscribe(
       (response) => {
         this.ibans = response.map((account: any) => account.iban);
@@ -45,6 +35,16 @@ export class TransactionsComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching IBANs', error);
+      }
+    );
+
+    this.dataService.getTransactions("2").subscribe(
+      (response) => {
+        this.data = response;
+        console.log('Data fetched successfully', this.data);
+      },
+      (error) => {
+        console.error('Error fetching data', error);
       }
     );
   }

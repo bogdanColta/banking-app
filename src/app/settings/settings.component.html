@@ -1,0 +1,19 @@
+<div class="settings-container">
+  <h2>Profile</h2>
+  <div class="profile">
+    <p>Name: {{ userName }}</p>
+  </div>
+
+  <h3>Settings</h3>
+  <ul class="settings-list">
+    <li><a routerLink="/personal-details">Personal Details</a></li>
+    <li><a routerLink="/documents">Documents</a></li>
+    <li><a routerLink="/access-security-privacy">Access Security and Privacy</a></li>
+    <li><a routerLink="/payment-accounts">Payment Accounts</a></li>
+    <li><a routerLink="/debit-cards">Debit Cards</a></li>
+    <li><a routerLink="/credit-cards">Credit Cards</a></li>
+    <li><a routerLink="/notifications">Notifications</a></li>
+  </ul>
+
+  <button (click)="logout()">Log Out</button>
+</div>
