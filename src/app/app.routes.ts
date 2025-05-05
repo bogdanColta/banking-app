@@ -4,10 +4,10 @@ import {InsightsComponent} from './insights/insights.component';
 import {MainComponent} from './main/main.component';
 import {ProductComponent} from './product/product.component';
 import {SettingsComponent} from './settings/settings.component';
-import {TransactionsComponent} from './transactions/transactions.component';
 import {IbanDetailsComponent} from './iban-details/iban-details.component';
 import {TransactionDetailsComponent} from './transaction-details/transaction-details.component';
 import {TransferFormComponent} from './transfer-form/transfer-form.component';
+import {HelpPageComponent} from './help-page/help-page.component';
 
 export const routes: Routes = [
   {
@@ -31,8 +31,8 @@ export const routes: Routes = [
     component: SettingsComponent
   },
   {
-    path: 'transactions',
-    component: TransactionsComponent
+    path: 'help',
+    component: HelpPageComponent
   },
   {
     path: 'iban-details/:iban',
