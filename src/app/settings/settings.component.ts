@@ -3,13 +3,12 @@ import { Router, RouterLink } from '@angular/router';
 import { DataService } from '../data-service/data.service';
 
 @Component({
-  standalone: true,
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  imports: [
-    RouterLink
-  ],
-  styleUrls: ['./settings.component.css']
+    selector: 'app-settings',
+    templateUrl: './settings.component.html',
+    imports: [
+        RouterLink
+    ],
+    styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
   userName: string = '';

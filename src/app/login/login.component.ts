@@ -5,14 +5,13 @@ import { AuthService } from '../auth-service/auth.service';
 import {NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    NgIf
-  ],
-  templateUrl: `./login.component.html`,
-  styles: []
+    selector: 'app-login',
+    imports: [
+        ReactiveFormsModule,
+        NgIf
+    ],
+    templateUrl: `./login.component.html`,
+    styles: []
 })
 export class LoginComponent {
   loginForm: FormGroup;

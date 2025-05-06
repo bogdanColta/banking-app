@@ -5,15 +5,14 @@ import {DataService} from '../data-service/data.service';
 import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-transfer-form',
-  standalone: true,
-  templateUrl: './transfer-form.component.html',
-  imports: [
-    NgIf,
-    NgForOf,
-    ReactiveFormsModule
-  ],
-  styleUrls: ['./transfer-form.component.css']
+    selector: 'app-transfer-form',
+    templateUrl: './transfer-form.component.html',
+    imports: [
+        NgIf,
+        NgForOf,
+        ReactiveFormsModule
+    ],
+    styleUrls: ['./transfer-form.component.css']
 })
 export class TransferFormComponent {
   transactionForm: FormGroup;

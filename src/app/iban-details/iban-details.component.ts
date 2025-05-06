@@ -5,15 +5,14 @@ import {CurrencyPipe, NgClass, NgForOf} from '@angular/common';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-account-details',
-  standalone: true,
-  templateUrl: './iban-details.component.html',
-  imports: [
-    NgForOf,
-    CurrencyPipe,
-    NgClass
-  ],
-  styleUrls: ['./iban-details.component.css']
+    selector: 'app-account-details',
+    templateUrl: './iban-details.component.html',
+    imports: [
+        NgForOf,
+        CurrencyPipe,
+        NgClass
+    ],
+    styleUrls: ['./iban-details.component.css']
 })
 export class IbanDetailsComponent implements OnInit {
   iban: string | null = null;

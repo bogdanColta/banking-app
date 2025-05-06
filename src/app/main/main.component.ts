@@ -4,14 +4,13 @@ import {CurrencyPipe, NgForOf} from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-main',
-  standalone: true,
-  templateUrl: './main.component.html',
-  imports: [
-    NgForOf,
-    CurrencyPipe
-  ]
-  // styleUrls: ['./main.component.css']
+    selector: 'app-main',
+    templateUrl: './main.component.html',
+    imports: [
+        NgForOf,
+        CurrencyPipe
+    ]
+    // styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
   bankAccounts: any[] = [];

@@ -1,32 +1,42 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Insights</h2>
-  <form (ngSubmit)="onSubmit()" #insightsForm="ngForm">
+  <form>
     <div class="form-group mb-3">
       <label for="iban">IBAN</label>
-      <input type="text" id="iban" class="form-control" [(ngModel)]="formData.iban" name="iban" required />
-    </div>
-    <div class="form-group mb-3">
-      <label for="startDate">Start Date</label>
-      <input type="date" id="startDate" class="form-control" [(ngModel)]="formData.startDate" name="startDate" required />
-    </div>
-    <div class="form-group mb-3">
-      <label for="endDate">End Date</label>
-      <input type="date" id="endDate" class="form-control" [(ngModel)]="formData.endDate" name="endDate" required />
-    </div>
-    <div class="form-group mb-3">
-      <label for="periodBin">Period Bin</label>
-      <select id="periodBin" class="form-control" [(ngModel)]="formData.periodBin" name="periodBin" required>
-        <option value="daily">Daily</option>
-        <option value="weekly">Weekly</option>
-        <option value="monthly">Monthly</option>
-        <option value="yearly">Yearly</option>
+      <select id="iban" class="form-control" [(ngModel)]="formData.iban" name="iban" (ngModelChange)="onFormChange()" required>
+        <option *ngFor="let iban of ibans" [value]="iban">{{ iban }}</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary w-100">Generate Insights</button>
+    <div class="form-row d-flex justify-content-between mb-3">
+      <div class="form-group flex-fill me-2">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" class="form-control" [(ngModel)]="formData.startDate" name="startDate" (ngModelChange)="onFormChange()" required/>
+      </div>
+      <div class="form-group flex-fill me-2">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" class="form-control" [(ngModel)]="formData.endDate" name="endDate" (ngModelChange)="onFormChange()" required/>
+      </div>
+      <div class="form-group flex-fill">
+        <label for="periodBin">Period Bin</label>
+        <select id="periodBin" class="form-control" [(ngModel)]="formData.periodBin" name="periodBin" (ngModelChange)="onFormChange()" required>
+          <option value="day">Daily</option>
+          <option value="week">Weekly</option>
+          <option value="month">Monthly</option>
+          <option value="year">Yearly</option>
+        </select>
+      </div>
+    </div>
   </form>
-
-  <div *ngIf="chartData" class="mt-5">
-    <h4 class="text-center">Insights Chart</h4>
-    <canvas id="insightsChart"></canvas>
+  <div class="d-flex justify-content-center align-items-center mt-5" style="height: 300px;">
+    <div style="position: relative; width: 70%; height: 100%;">
+      <canvas baseChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [legend]="lineChartLegend"
+              [type]="lineChartType"
+              [plugins]="lineChartPlugins">
+      </canvas>
+    </div>
   </div>
 </div>
