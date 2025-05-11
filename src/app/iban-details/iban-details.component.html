@@ -1,27 +1,25 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Transactions for {{ iban }}</h2>
+    <h2 class="iban-header">{{ iban }}</h2>
     <div>
       <button
-        class="btn btn-primary rounded-circle me-2"
+        class="btn btn-primary transfer-btn rounded-circle me-2"
         (click)="navigateToTransferForm()"
-        style="width: 50px; height: 50px;"
+        style="width: 45px; height: 45px;"
         title="Transfer"
       >
         <i class="bi bi-arrow-right-circle"></i>
       </button>
-      <button
-        class="btn btn-secondary rounded-circle"
-        title="Request"
-        style="width: 50px; height: 50px;"
-      >
-        <i class="bi bi-arrow-down-circle"></i>
-      </button>
     </div>
   </div>
   <div *ngFor="let date of groupedTransactions | keyvalue">
-    <h5 class="text-muted mt-4">{{ date.key }}</h5>
     <ul class="list-group">
+      <li
+        class="list-group-item text-start text-muted date-header"
+        style="background-color: #f8f9fa; cursor: default;"
+      >
+        {{ date.key }}
+      </li>
       <li
         class="list-group-item d-flex justify-content-between align-items-center"
         *ngFor="let transaction of date.value"
@@ -30,7 +28,9 @@
       >
         <div>
           <h5 class="mb-1">
-            {{ transaction.senderIBAN === iban ? 'To: ' + transaction.receiverIBAN : 'From: ' + transaction.senderIBAN }}
+            <span class="iban-small">
+              {{ transaction.senderIBAN === iban ? 'To: ' + transaction.receiverIBAN : 'From: ' + transaction.senderIBAN }}
+            </span>
           </h5>
           <small class="text-muted">Date: {{ parseDate(transaction.date) }}</small>
         </div>
@@ -38,8 +38,8 @@
           class="badge rounded-pill"
           [ngClass]="{'bg-success': transaction.receiverIBAN === iban, 'bg-danger': transaction.senderIBAN === iban}"
         >
-        {{ transaction.receiverIBAN === iban ? '+' : '-' }}{{ transaction.amount | currency }}
-      </span>
+          {{ transaction.receiverIBAN === iban ? '+' : '-' }}{{ transaction.amount | currency }}
+        </span>
       </li>
     </ul>
   </div>

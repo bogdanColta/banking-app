@@ -45,9 +45,10 @@ export class TransferFormComponent {
       this.dataService.postTransaction(this.transactionForm.value).subscribe(
         (response) => {
           console.log('Data posted successfully', response);
-          this.ngOnInit();
+          this.router.navigate(['/successful-transaction']);
         },
         (error) => {
+          console.log(error);
           console.error('Error posting data', error);
         }
       );

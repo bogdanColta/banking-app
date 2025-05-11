@@ -30,7 +30,6 @@
             <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['pattern']">Receiver IBAN must be alphanumeric.</small>
           </div>
         </div>
-
         <button type="submit" [disabled]="transactionForm.invalid" class="btn btn-primary w-100">Submit</button>
       </form>
     </div>

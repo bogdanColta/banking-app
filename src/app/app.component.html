@@ -1,25 +1,46 @@
 <router-outlet></router-outlet>
 
 <!-- Bottom Navigation Bar -->
-<nav class="navbar fixed-bottom navbar-light bg-light border-top">
+<nav *ngIf="router.url !== '/login'" class="navbar fixed-bottom navbar-light bg-light border-top">
   <div class="container d-flex justify-content-around">
-    <a class="nav-item nav-link text-center" routerLink="main">
+    <a
+      class="nav-item nav-link text-center"
+      routerLink="main"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <i class="bi bi-house"></i>
       <span class="d-block">Main</span>
     </a>
-    <a class="nav-item nav-link text-center" routerLink="insights">
+    <a
+      class="nav-item nav-link text-center"
+      routerLink="insights"
+      routerLinkActive="active-link"
+    >
       <i class="bi bi-bar-chart"></i>
       <span class="d-block">Insights</span>
     </a>
-    <a class="nav-item nav-link text-center" routerLink="product">
+    <a
+      class="nav-item nav-link text-center"
+      routerLink="product"
+      routerLinkActive="active-link"
+    >
       <i class="bi bi-cart3"></i>
       <span class="d-block">Products</span>
     </a>
-    <a class="nav-item nav-link text-center" routerLink="help">
+    <a
+      class="nav-item nav-link text-center"
+      routerLink="help"
+      routerLinkActive="active-link"
+    >
       <i class="bi bi-chat-dots"></i>
       <span class="d-block">Help</span>
     </a>
-    <a class="nav-item nav-link text-center" routerLink="settings">
+    <a
+      class="nav-item nav-link text-center"
+      routerLink="settings"
+      routerLinkActive="active-link"
+    >
       <i class="bi bi-gear"></i>
       <span class="d-block">Settings</span>
     </a>

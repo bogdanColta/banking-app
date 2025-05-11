@@ -8,6 +8,7 @@ import {IbanDetailsComponent} from './iban-details/iban-details.component';
 import {TransactionDetailsComponent} from './transaction-details/transaction-details.component';
 import {TransferFormComponent} from './transfer-form/transfer-form.component';
 import {HelpPageComponent} from './help-page/help-page.component';
+import {SuccessfulTransactionComponent} from './successful-transaction/successful-transaction.component';
 
 export const routes: Routes = [
   {
@@ -50,5 +51,9 @@ export const routes: Routes = [
   {
     path: 'transfer-form',
     component: TransferFormComponent
+  },
+  {
+    path: 'successful-transaction',
+    component: SuccessfulTransactionComponent
   }
 ];

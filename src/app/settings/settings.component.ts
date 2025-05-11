@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { DataService } from '../data-service/data.service';
+import { AuthService } from '../auth-service/auth.service';
 
 @Component({
     selector: 'app-settings',
@@ -13,7 +14,7 @@ import { DataService } from '../data-service/data.service';
 export class SettingsComponent implements OnInit {
   userName: string = '';
 
-  constructor(private router: Router, private dataService: DataService) {}
+  constructor(private router: Router, private dataService: DataService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.fetchUserData();
@@ -32,6 +33,7 @@ export class SettingsComponent implements OnInit {
 
   logout(): void {
     console.log('User logged out');
+    this.authService.clearToken();
     this.router.navigate(['/login']);
   }
 }
