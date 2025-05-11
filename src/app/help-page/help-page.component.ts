@@ -3,12 +3,8 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app-help-page',
     imports: [],
-    template: `
-    <p>
-      help-page works!
-    </p>
-  `,
-    styles: ``
+    templateUrl: 'help-page.component.html',
+    styles: `help-page.component.scss`
 })
 export class HelpPageComponent {
 

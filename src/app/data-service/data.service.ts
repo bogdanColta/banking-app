@@ -71,4 +71,8 @@ export class DataService {
   getInsightsForAmountSpent(iban: string, startDate: string, endDate: string, periodBin: string): Observable<any> {
     return this.http.get(this.url + 'insights/amounts?iban=' + iban + '&startDate=' + startDate + '&endDate=' + endDate + '&periodBin=' + periodBin);
   }
+
+  getInsightsInAndOutAmounts(iban: string, startDate: string, endDate: string): Observable<any> {
+    return this.http.get(this.url + 'insights/in-out-amount?iban=' + iban + '&startDate=' + startDate + '&endDate=' + endDate);
+  }
 }

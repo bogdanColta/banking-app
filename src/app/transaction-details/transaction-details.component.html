@@ -1,39 +1,40 @@
 <div class="container mt-5">
-  <h2 class="text-center mb-4">Transaction Details</h2>
+  <div class="d-flex justify-content-start mb-4">
+    <button
+      class="btn btn-secondary rounded-circle"
+      (click)="goBack()"
+      style="width: 50px; height: 50px;"
+      title="Go Back"
+    >
+      &#8592;
+    </button>
+  </div>
   <div class="card shadow-lg">
-    <div class="card-header bg-primary text-white text-center">
-      <h4>Transaction ID: {{ transaction.id }}</h4>
-    </div>
     <div class="card-body">
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <p><strong>Amount:</strong></p>
-          <h5 class="text-success" *ngIf="transaction.receiverIBAN === transaction.iban">
-            +{{ transaction.amount | currency }}
-          </h5>
-          <h5 class="text-danger" *ngIf="transaction.senderIBAN === transaction.iban">
-            -{{ transaction.amount | currency }}
-          </h5>
-        </div>
-        <div class="col-md-6">
-          <p><strong>Date:</strong></p>
-          <h5>{{ transaction.date }}</h5>
-        </div>
+      <div class="mb-3">
+        <p><strong>Amount:</strong></p>
+        <h5 class="text-success" *ngIf="transaction.receiverIBAN === iban">
+          +{{ transaction.amount | currency }}
+        </h5>
+        <h5 class="text-danger" *ngIf="transaction.senderIBAN === iban">
+          -{{ transaction.amount | currency }}
+        </h5>
+      </div>
+      <div class="mb-3">
+        <p><strong>Date:</strong></p>
+        <h5>{{ parseDate(transaction.date) }}</h5>
       </div>
       <hr />
-      <div class="row">
-        <div class="col-md-6">
-          <p><strong>Sender IBAN:</strong></p>
-          <h5>{{ transaction.senderIBAN }}</h5>
-        </div>
-        <div class="col-md-6">
-          <p><strong>Receiver IBAN:</strong></p>
-          <h5>{{ transaction.receiverIBAN }}</h5>
-        </div>
+      <div class="mb-3">
+        <p><strong>From:</strong></p>
+        <h5>{{ transaction.senderName }}</h5>
+        <h6>{{ transaction.senderIBAN }}</h6>
       </div>
-    </div>
-    <div class="card-footer text-center">
-      <button class="btn btn-secondary" (click)="goBack()">Back</button>
+      <div class="mb-3">
+        <p><strong>To:</strong></p>
+        <h5>{{ transaction.receiverName }}</h5>
+        <h6>{{ transaction.receiverIBAN }}</h6>
+      </div>
     </div>
   </div>
 </div>

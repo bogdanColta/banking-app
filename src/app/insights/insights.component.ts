@@ -3,7 +3,7 @@ import {FormsModule,} from '@angular/forms';
 import {Chart, ChartDataset, ChartOptions, ChartType, registerables} from 'chart.js';
 import {BaseChartDirective} from 'ng2-charts';
 import {DataService} from '../data-service/data.service';
-import {NgForOf} from '@angular/common';
+import {CurrencyPipe, NgForOf, CommonModule} from '@angular/common';
 import {DatePipe} from '@angular/common';
 
 Chart.register(...registerables);
@@ -15,6 +15,8 @@ Chart.register(...registerables);
     FormsModule,
     BaseChartDirective,
     NgForOf,
+    CurrencyPipe,
+    CommonModule,
   ],
   providers: [DatePipe],
   templateUrl: './insights.component.html'
@@ -31,6 +33,9 @@ export class InsightsComponent implements OnInit {
   }
 
   ibans: string[] = [];
+  inAmount: number = 0;
+  outAmount: number = 0;
+  totalAmount: number = 0;
 
   public lineChartOptions: ChartOptions = {
     responsive: true,
@@ -105,6 +110,24 @@ export class InsightsComponent implements OnInit {
           console.error('Error fetching insights', error);
         }
       );
+      this.dataService.getInsightsInAndOutAmounts(iban, startDate, endDate).subscribe(
+        (response: { inAmount: number; outAmount: number }) => {
+          this.inAmount = response.inAmount;
+          this.outAmount = response.outAmount;
+          this.totalAmount = this.inAmount + this.outAmount;
+        },
+        (error) => {
+          console.error('Error fetching amounts', error);
+        }
+      );
     }
+  }
+
+  getInAmountPercentage(): number {
+    return this.totalAmount ? (this.inAmount / this.totalAmount) * 100 : 0;
+  }
+
+  getOutAmountPercentage(): number {
+    return this.totalAmount ? (this.outAmount / this.totalAmount) * 100 : 0;
   }
 }

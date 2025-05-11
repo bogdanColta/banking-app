@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5" style="padding-bottom: 90px">
   <h2 class="text-center mb-4">Insights</h2>
   <form>
     <div class="form-group mb-3">
@@ -16,8 +16,10 @@
         <label for="endDate">End Date</label>
         <input type="date" id="endDate" class="form-control" [(ngModel)]="formData.endDate" name="endDate" (ngModelChange)="onFormChange()" required/>
       </div>
+    </div>
+    <div class="form-row mb-3">
       <div class="form-group flex-fill">
-        <label for="periodBin">Period Bin</label>
+        <label for="periodBin">Period</label>
         <select id="periodBin" class="form-control" [(ngModel)]="formData.periodBin" name="periodBin" (ngModelChange)="onFormChange()" required>
           <option value="day">Daily</option>
           <option value="week">Weekly</option>
@@ -27,16 +29,54 @@
       </div>
     </div>
   </form>
-  <div class="d-flex justify-content-center align-items-center mt-5" style="height: 300px;">
-    <div style="position: relative; width: 70%; height: 100%;">
-      <canvas baseChart
-              [datasets]="lineChartData"
-              [labels]="lineChartLabels"
-              [options]="lineChartOptions"
-              [legend]="lineChartLegend"
-              [type]="lineChartType"
-              [plugins]="lineChartPlugins">
-      </canvas>
+
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Your Spending</h5>
+      <div class="mb-3">
+        <label class="form-label">In Amount: {{ inAmount | currency }}</label>
+        <div class="progress">
+          <div
+            class="progress-bar bg-success"
+            role="progressbar"
+            [style.width.%]="getInAmountPercentage()"
+            [attr.aria-valuenow]="getInAmountPercentage()"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
+      <div>
+        <label class="form-label">Out Amount: {{ outAmount | currency }}</label>
+        <div class="progress">
+          <div
+            class="progress-bar bg-danger"
+            role="progressbar"
+            [style.width.%]="getOutAmountPercentage()"
+            [attr.aria-valuenow]="getOutAmountPercentage()"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Spending Progression</h5>
+      <div class="d-flex justify-content-center align-items-center" style="height: 300px">
+        <div style="position: relative; width: 60%; height: 100%;">
+          <canvas baseChart
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [legend]="lineChartLegend"
+                  [type]="lineChartType"
+                  [plugins]="lineChartPlugins">
+          </canvas>
+        </div>
+      </div>
     </div>
   </div>
 </div>
