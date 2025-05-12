@@ -9,6 +9,8 @@ import {TransactionDetailsComponent} from './transaction-details/transaction-det
 import {TransferFormComponent} from './transfer-form/transfer-form.component';
 import {HelpPageComponent} from './help-page/help-page.component';
 import {SuccessfulTransactionComponent} from './successful-transaction/successful-transaction.component';
+import {FootprintComponent} from './footprint/footprint.component';
+import {FootprintTransactionsComponent} from './footprint-transactions/footprint-transactions.component';
 
 export const routes: Routes = [
   {
@@ -55,5 +57,13 @@ export const routes: Routes = [
   {
     path: 'successful-transaction',
     component: SuccessfulTransactionComponent
+  },
+  {
+    path: 'footprint',
+    component: FootprintComponent
+  },
+  {
+    path: 'footprint-transactions',
+    component: FootprintTransactionsComponent
   }
 ];

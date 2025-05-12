@@ -5,6 +5,7 @@ import {BaseChartDirective} from 'ng2-charts';
 import {DataService} from '../data-service/data.service';
 import {CurrencyPipe, NgForOf, CommonModule} from '@angular/common';
 import {DatePipe} from '@angular/common';
+import {Router} from '@angular/router';
 
 Chart.register(...registerables);
 
@@ -29,7 +30,7 @@ export class InsightsComponent implements OnInit {
     periodBin: 'month'
   };
 
-  constructor(private dataService: DataService, private datePipe: DatePipe) {
+  constructor(private dataService: DataService, private datePipe: DatePipe, private router: Router) {
   }
 
   ibans: string[] = [];
@@ -129,5 +130,16 @@ export class InsightsComponent implements OnInit {
 
   getOutAmountPercentage(): number {
     return this.totalAmount ? (this.outAmount / this.totalAmount) * 100 : 0;
+  }
+
+  redirectToFootprint(): void {
+    this.router.navigate(['/footprint'], {
+      queryParams: {
+        startDate: this.formData.startDate,
+        endDate: this.formData.endDate,
+        iban: this.formData.iban,
+        periodBin: this.formData.periodBin
+      }
+    });
   }
 }

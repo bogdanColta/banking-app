@@ -1,0 +1,17 @@
+.period-list-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.period-list-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.period-list-container ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+

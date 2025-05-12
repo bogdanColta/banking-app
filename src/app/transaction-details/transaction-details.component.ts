@@ -1,18 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data-service/data.service';
-import {CurrencyPipe, NgIf} from '@angular/common';
+import {CurrencyPipe, NgForOf, NgIf} from '@angular/common';
 
 @Component({
     selector: 'app-transaction-details',
     templateUrl: './transaction-details.component.html',
-    imports: [
-        CurrencyPipe,
-        NgIf
-    ],
+  imports: [
+    CurrencyPipe,
+    NgIf,
+    NgForOf
+  ],
     styleUrls: ['./transaction-details.component.css']
 })
 export class TransactionDetailsComponent implements OnInit {
+  categories: string[] = [
+    'Electricity',
+    'Gas',
+    'Train',
+    'Bus',
+    'Clothes',
+    'Groceries',
+    'Electronics',
+    'Furniture',
+    'Banking',
+    'Insurance',
+    'Education',
+    'Other'
+  ];
   transaction: any;
   iban: any;
 
@@ -46,5 +61,23 @@ export class TransactionDetailsComponent implements OnInit {
       hourCycle: 'h23'
     };
     return new Date(date).toLocaleString(undefined, options);
+  }
+
+  selectCategory(category: string): void {
+    const data = {
+      id: this.transaction.id,
+      category: category,
+    };
+
+    this.dataService.setCategory(data).subscribe(
+      (response) => {
+        this.transaction.category = category;
+        console.log('Data posted successfully', response);
+      },
+      (error) => {
+        console.log(error);
+        console.error('Error posting data', error);
+      }
+    );
   }
 }
