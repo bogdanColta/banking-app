@@ -8,8 +8,11 @@ interface Transaction {
   date: string;
   senderIBAN: string;
   receiverIBAN: string;
+  senderName: string;
+  receiverName: string;
   amount: number;
   emission : number;
+  category: string;
   [key: string]: any;
 }
 
@@ -30,6 +33,7 @@ export class FootprintTransactionsComponent implements OnInit {
   period: string = '';
   category: string = '';
   iban: string = '';
+  name: string = '';
 
   constructor(private router: Router) {}
 
@@ -37,6 +41,12 @@ export class FootprintTransactionsComponent implements OnInit {
     this.router.routerState.root.queryParams.subscribe(params => {
       const transactions = params['transactions'];
       this.transactions = transactions ? JSON.parse(transactions) : [];
+      let transaction = this.transactions[0];
+      if (transaction.receiverIBAN == this.iban) {
+        this.name = transaction.receiverName;
+      }else {
+        this.name = transaction.senderName;
+      }
       this.period = params['period'] || '';
       this.category = params['category'] || '';
       this.iban = params['iban'] || '';

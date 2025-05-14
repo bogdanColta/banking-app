@@ -1,7 +1,11 @@
-<div class="container mt-4">
-  <h2 class="text-center mb-4">Overview</h2>
+<div class="header-card-full shadow-sm mb-0">
+  <div class="card-body text-center">
+    <h2 class="card-title mb-0">Overview</h2>
+  </div>
+</div>
+<div class="container mt-3">
   <div class="row">
-    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let account of bankAccounts">
+    <div class="col-md-6 col-lg-4 mb-3" *ngFor="let account of bankAccounts">
       <div class="card shadow-sm" (click)="viewAccountDetails(account.iban)" style="cursor: pointer;">
         <div class="card-body">
           <h5 class="card-title">Account: {{ account.iban }}</h5>

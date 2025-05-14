@@ -1,6 +1,25 @@
-<div class="container mt-4">
+<div class="header-card-full shadow-sm mb-0">
   <div class="d-flex flex-column align-items-center mb-4">
-    <h2 class="text-center">Transaction Details</h2>
+    <div
+      *ngIf="transaction.receiverIBAN === iban; else outgoing"
+      class="amount-square mb-4"
+      style="background: #56d772; color: #fff;"
+    >
+      +{{ transaction.amount | currency }}
+    </div>
+    <ng-template #outgoing>
+      <div class="amount-square mb-4" style="background: #f65f6d; color: #fff;">
+        -{{ transaction.amount | currency }}
+      </div>
+    </ng-template>
+    <h2 class="text-center">
+      <ng-container *ngIf="transaction.receiverIBAN === iban; else senderName">
+        {{ transaction.senderName }}
+      </ng-container>
+      <ng-template #senderName>
+        {{ transaction.receiverName }}
+      </ng-template>
+    </h2>
   </div>
   <div class="mb-3 d-flex justify-content-center">
     <button
@@ -21,27 +40,21 @@
       </li>
     </ul>
   </div>
-  <div class="card shadow-lg">
+</div>
+<div class="container mt-4">
+  <div class="card shadow-sm">
     <div class="card-body">
-      <div class="mb-3">
-        <p><strong>Amount:</strong></p>
-        <h5 class="text-success" *ngIf="transaction.receiverIBAN === iban">
-          +{{ transaction.amount | currency }}
-        </h5>
-        <h5 class="text-danger" *ngIf="transaction.senderIBAN === iban">
-          -{{ transaction.amount | currency }}
-        </h5>
-      </div>
       <div class="mb-3">
         <p><strong>Date:</strong></p>
         <h5>{{ parseDate(transaction.date) }}</h5>
       </div>
-      <hr />
+      <hr/>
       <div class="mb-3">
         <p><strong>From:</strong></p>
         <h5>{{ transaction.senderName }}</h5>
         <h6>{{ transaction.senderIBAN }}</h6>
       </div>
+      <hr/>
       <div class="mb-3">
         <p><strong>To:</strong></p>
         <h5>{{ transaction.receiverName }}</h5>

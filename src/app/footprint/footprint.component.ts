@@ -86,7 +86,10 @@ export class FootprintComponent implements OnInit {
       'Recreational Services': 'bi bi-controller',
       Other: 'bi bi-question-circle'
     };
-    return categoryIcons[category] || 'bi bi-question-circle';
+    if (!category || !categoryIcons[category]) {
+      return categoryIcons['Other'];
+    }
+    return categoryIcons[category];
   }
 
   getTotalValuesForPeriod(period: string): { totalAmount: number; totalEmission: number } {
