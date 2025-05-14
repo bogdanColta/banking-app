@@ -41,7 +41,7 @@
           class="badge rounded-pill"
           [ngClass]="{'bg-success': transaction.receiverIBAN === iban, 'bg-danger': transaction.senderIBAN === iban}"
         >
-          {{ transaction.receiverIBAN === iban ? '+' : '-' }}{{ transaction.amount | currency }}
+          {{ transaction.receiverIBAN === iban ? '+' : '-' }}{{ transaction.amount | currency:'EUR':'symbol' }}
         </span>
       </li>
     </ul>

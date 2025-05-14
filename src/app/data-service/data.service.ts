@@ -35,6 +35,10 @@ export class DataService {
     return this.http.get(this.url + 'transactions?iban=' + param);
   }
 
+  getNameAccount(param: any): Observable<any> {
+    return this.http.get(this.url + 'customers/name-account?iban=' + param);
+  }
+
   postTransaction(data: any): Observable<any> {
     return this.http.post(this.url + 'transactions', data);
   }

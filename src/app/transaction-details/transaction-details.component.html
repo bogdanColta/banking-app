@@ -5,11 +5,11 @@
       class="amount-square mb-4"
       style="background: #56d772; color: #fff;"
     >
-      +{{ transaction.amount | currency }}
+      +{{ transaction.amount | currency:'EUR':'symbol' }}
     </div>
     <ng-template #outgoing>
       <div class="amount-square mb-4" style="background: #f65f6d; color: #fff;">
-        -{{ transaction.amount | currency }}
+        -{{ transaction.amount | currency:'EUR':'symbol' }}
       </div>
     </ng-template>
     <h2 class="text-center">

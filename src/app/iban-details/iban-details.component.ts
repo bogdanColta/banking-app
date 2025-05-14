@@ -42,12 +42,6 @@ export class IbanDetailsComponent implements OnInit {
     this.dataService.getTransactions(this.iban).subscribe(
       (response: Transaction[]) => {
         this.transactions = response;
-        let transaction = this.transactions[0];
-        if (transaction.receiverIBAN == this.iban) {
-          this.name = transaction.receiverName;
-        }else {
-          this.name = transaction.senderName;
-        }
         this.groupTransactionsByDate();
         console.log('Data fetched successfully', this.transactions);
       },
@@ -55,6 +49,15 @@ export class IbanDetailsComponent implements OnInit {
         console.error('Error fetching data', error);
       }
     );
+    this.dataService.getNameAccount(this.iban).subscribe(
+      (response: any) => {
+        this.name = response.name;
+        console.log('Account name fetched successfully', this.name);
+      },
+      (error) => {
+        console.error('Error fetching account name', error);
+      }
+    )
   }
 
   groupTransactionsByDate(): void {

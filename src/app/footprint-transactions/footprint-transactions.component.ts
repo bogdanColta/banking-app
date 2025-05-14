@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {CurrencyPipe, KeyValuePipe, NgClass, NgForOf} from '@angular/common';
 import {groupBy} from 'lodash';
+import {DataService} from '../data-service/data.service';
 
 interface Transaction {
   id: string;
@@ -35,23 +36,26 @@ export class FootprintTransactionsComponent implements OnInit {
   iban: string = '';
   name: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dataService: DataService) {}
 
   ngOnInit(): void {
     this.router.routerState.root.queryParams.subscribe(params => {
       const transactions = params['transactions'];
       this.transactions = transactions ? JSON.parse(transactions) : [];
-      let transaction = this.transactions[0];
-      if (transaction.receiverIBAN == this.iban) {
-        this.name = transaction.receiverName;
-      }else {
-        this.name = transaction.senderName;
-      }
       this.period = params['period'] || '';
       this.category = params['category'] || '';
       this.iban = params['iban'] || '';
       this.groupTransactionsByDate();
     });
+    this.dataService.getNameAccount(this.iban).subscribe(
+      (response: any) => {
+        this.name = response.name;
+        console.log('Account name fetched successfully', this.name);
+      },
+      (error) => {
+        console.error('Error fetching account name', error);
+      }
+    )
   }
 
   viewTransactionDetails(transaction: Transaction, iban: string): void {
