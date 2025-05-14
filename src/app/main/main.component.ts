@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
         NgForOf,
         CurrencyPipe
     ]
-    // styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
   bankAccounts: any[] = [];
@@ -31,5 +30,13 @@ export class MainComponent implements OnInit {
 
   viewAccountDetails(iban: string): void {
     this.router.navigate(['/iban-details', iban]);
+  }
+
+  navigateToTransferForm(): void {
+    this.router.navigate(['/transfer-form']);
+  }
+
+  totalAmount(): number {
+    return this.bankAccounts?.reduce((sum: number, acc: any) => sum + (acc.balance || 0), 0) || 0;
   }
 }

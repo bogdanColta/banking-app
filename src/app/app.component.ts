@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterOutlet, RouterLink, RouterLinkActive} from '@angular/router';
-import {NgIf} from '@angular/common';
-import { Router } from '@angular/router';
+import {NgIf, DatePipe} from '@angular/common';
+import {Router, NavigationEnd} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
-    selector: 'app-root',
+  selector: 'app-root',
   imports: [RouterOutlet, RouterLink, NgIf, RouterLinkActive],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css'
+  providers: [DatePipe],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
-
 export class AppComponent {
-  title = 'banking-app';
+  currentTime: string | null = null;
 
-  constructor(public router: Router) { }
-
+  constructor(public router: Router, private datePipe: DatePipe) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.currentTime = this.datePipe.transform(new Date(), 'HH:mm');
+      });
+  }
 }

@@ -91,6 +91,17 @@ button.transfer-btn:hover, .btn.transfer-btn:hover {
   background-color: var(--primary-orange) !important; /* Change background on hover */
 }
 
+.custom-orange-button {
+  font-weight: bold;
+  border-color: #ff7f00;
+  color: #ff7f00;
+}
+
+.custom-orange-button:hover {
+  background-color: #ff7f00;
+  color: #fff;
+}
+
 .nav-link {
   color: var(--text-dark);
   text-decoration: none;

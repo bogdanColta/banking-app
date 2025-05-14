@@ -1,0 +1,56 @@
+.amount-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.currency-label {
+  font-size: 2.5rem;
+  margin-right: 0.5rem;
+  color: #888;
+  min-width: 3.5rem;
+  text-align: left;
+}
+
+.amount-input {
+  font-size: 2.5rem;
+  border: none;
+  border-bottom: 2px solid var(--primary-orange);
+  background: transparent;
+  outline: none;
+  width: 100%;
+  box-shadow: none;
+  padding: 0.5rem 0;
+}
+
+.amount-input:focus + .currency-label,
+.amount-input:not(:placeholder-shown) + .currency-label {
+  color: #222; /* Darker color */
+}
+
+/* Adjust HTML so .currency-label comes after the input for + selector */
+.amount-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.amount-input {
+  order: 2;
+  font-size: 2.5rem;
+  border: none;
+  border-bottom: 2px solid var(--primary-orange);
+  background: transparent;
+  outline: none;
+  width: 100%;
+  box-shadow: none;
+  padding: 0.5rem 0;
+}
+
+.currency-label {
+  order: 1;
+  font-size: 2.5rem;
+  margin-right: 0.5rem;
+  color: #888;
+  min-width: 3.5rem;
+  text-align: left;
+  transition: color 0.2s;
+}

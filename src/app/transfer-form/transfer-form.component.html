@@ -1,14 +1,32 @@
+<div class="header-card-full shadow-sm mb-0">
+  <div class="card-body d-flex justify-content-between align-items-center">
+    <div>
+      <h2 class="card-title mb-0">{{ currentIban }}</h2>
+      <div class="text-muted" style="font-size: 1rem;">{{ currentBalance | currency }}</div>
+    </div>
+  </div>
+</div>
 <div class="container mt-4">
-  <h2 class="text-center mb-4">Transactions</h2>
   <div class="row justify-content-center">
     <div class="col-md-6">
       <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()" class="card p-4 shadow-sm">
         <div class="mb-3">
-          <label for="amount" class="form-label">Amount:</label>
-          <input id="amount" formControlName="amount" type="text" class="form-control" />
+          <label for="amount" class="form-label">Amount</label>
+          <div class="amount-input-wrapper">
+            <div class="amount-input-wrapper">
+              <input
+                id="amount"
+                formControlName="amount"
+                type="text"
+                class="amount-input"
+                placeholder="0.00"
+                autocomplete="off"
+              />
+              <span class="currency-label">€</span>
+            </div>
+          </div>
           <div *ngIf="transactionForm.get('amount')?.invalid && transactionForm.get('amount')?.touched" class="text-danger">
-            <small *ngIf="transactionForm.get('amount')?.errors?.['required']">Amount is required.</small>
-            <small *ngIf="transactionForm.get('amount')?.errors?.['pattern']">Amount must be a number.</small>
+            <small>Amount is required and must be a number.</small>
           </div>
         </div>
 
@@ -23,14 +41,24 @@
         </div>
 
         <div class="mb-3">
-          <label for="receiverIBAN" class="form-label">Receiver IBAN:</label>
-          <input id="receiverIBAN" formControlName="receiverIBAN" type="text" class="form-control" />
-          <div *ngIf="transactionForm.get('receiverIBAN')?.invalid && transactionForm.get('receiverIBAN')?.touched" class="text-danger">
-            <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['required']">Receiver IBAN is required.</small>
-            <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['pattern']">Receiver IBAN must be alphanumeric.</small>
+          <label for="receiverName" class="form-label">Recipient:</label>
+          <input id="receiverName" formControlName="receiverName" type="text" class="form-control" />
+          <div *ngIf="transactionForm.get('receiverName')?.invalid && transactionForm.get('receiverName')?.touched" class="text-danger">
+            <small>Recipient is required.</small>
           </div>
         </div>
-        <button type="submit" [disabled]="transactionForm.invalid" class="btn btn-primary w-100">Submit</button>
+
+        <div class="mb-3">
+          <label for="receiverIBAN" class="form-label">Recipient IBAN:</label>
+          <input id="receiverIBAN" formControlName="receiverIBAN" type="text" class="form-control" />
+          <div class="text-danger" style="min-height: 1.5em;">
+            <ng-container *ngIf="transactionForm.get('receiverIBAN')?.invalid && transactionForm.get('receiverIBAN')?.touched">
+              <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['required']">Recipient IBAN is required.</small>
+              <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['pattern']">Recipient IBAN must be alphanumeric.</small>
+            </ng-container>
+          </div>
+        </div>
+        <button type="submit" [disabled]="transactionForm.invalid" class="btn w-100 custom-orange-button">Submit</button>
       </form>
     </div>
   </div>
