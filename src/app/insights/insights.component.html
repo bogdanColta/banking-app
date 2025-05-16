@@ -46,7 +46,7 @@
       <h5 class="card-title">Your Spending</h5>
       <div class="mb-3">
         <label class="form-label">In Amount: {{ inAmount | currency:'EUR':'symbol' }}</label>
-        <div class="progress">
+        <div class="progress" (click)="redirectToIncomeTransactions('in')">
           <div
             class="progress-bar bg-success"
             role="progressbar"
@@ -59,7 +59,7 @@
       </div>
       <div>
         <label class="form-label">Out Amount: {{ outAmount | currency:'EUR':'symbol' }}</label>
-        <div class="progress">
+        <div class="progress" (click)="redirectToIncomeTransactions('out')">
           <div
             class="progress-bar bg-danger"
             role="progressbar"

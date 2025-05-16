@@ -65,7 +65,7 @@ export class DataService {
   }
 
   getCustomerData(): Observable<any> {
-    return this.http.get(this.url + 'customers');
+    return this.http.get(this.url + 'customers/login');
   }
 
   getTransactionById(id: any): Observable<any> {
@@ -86,6 +86,10 @@ export class DataService {
 
   getInsightsInAndOutAmounts(iban: string, startDate: string, endDate: string): Observable<any> {
     return this.http.get(this.url + 'insights/in-out-amount?iban=' + iban + '&startDate=' + startDate + '&endDate=' + endDate);
+  }
+
+  getInsightsInAndOutTransactions(iban: string, startDate: string, endDate: string): Observable<any> {
+    return this.http.get(this.url + 'insights/in-out-transactions?iban=' + iban + '&startDate=' + startDate + '&endDate=' + endDate);
   }
 
   setCategory(transaction: any) {

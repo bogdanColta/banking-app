@@ -1,0 +1,85 @@
+.login-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+}
+
+.pin-dots {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  margin-top: 17rem;
+  position: relative;
+}
+
+.dot {
+  width: clamp(12px, 3vw, 20px);
+  height: clamp(12px, 3vw, 20px);
+  border-radius: 50%;
+  border: 2px solid var(--primary-orange);
+  background: #fff;
+  display: inline-block;
+}
+.dot.filled {
+  background: var(--primary-orange);
+}
+
+.pin-pad {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+.pin-btn {
+  width: clamp(60px, 18vw, 90px);
+  height: clamp(60px, 18vw, 90px);
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  border: none;
+  background: none;
+  box-shadow: none;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--primary-orange);
+}
+
+.pin-btn.backspace {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.pin-btn.invisible {
+  visibility: hidden;
+}
+
+.error-message-top {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+  z-index: 9999;
+  color: #606060;
+  background: #f5f6fa;
+  font-weight: bold;
+  font-size: 1.7rem;
+}

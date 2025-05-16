@@ -142,4 +142,16 @@ export class InsightsComponent implements OnInit {
       }
     });
   }
+
+  redirectToIncomeTransactions(type: 'in' | 'out'): void {
+    this.router.navigate(['/income-transactions'], {
+      queryParams: {
+        startDate: this.formData.startDate,
+        endDate: this.formData.endDate,
+        iban: this.formData.iban,
+        periodBin: this.formData.periodBin,
+        type: type
+      }
+    });
+  }
 }

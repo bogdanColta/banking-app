@@ -11,6 +11,7 @@ import {HelpPageComponent} from './help-page/help-page.component';
 import {SuccessfulTransactionComponent} from './successful-transaction/successful-transaction.component';
 import {FootprintComponent} from './footprint/footprint.component';
 import {FootprintTransactionsComponent} from './footprint-transactions/footprint-transactions.component';
+import {IncomeTransactionsComponent} from './income-transactions/income-transactions.component';
 
 export const routes: Routes = [
   {
@@ -65,5 +66,9 @@ export const routes: Routes = [
   {
     path: 'footprint-transactions',
     component: FootprintTransactionsComponent
+  },
+  {
+    path: 'income-transactions',
+    component: IncomeTransactionsComponent
   }
 ];
