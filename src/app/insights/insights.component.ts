@@ -20,7 +20,8 @@ Chart.register(...registerables);
     CommonModule,
   ],
   providers: [DatePipe],
-  templateUrl: './insights.component.html'
+  templateUrl: './insights.component.html',
+  styleUrls: ['./insights.component.css']
 })
 export class InsightsComponent implements OnInit {
   formData = {
@@ -50,6 +51,9 @@ export class InsightsComponent implements OnInit {
         },
         grid: {
           display: false,
+        },
+        border: {
+          width: 6
         }
       },
       y: {
@@ -58,6 +62,9 @@ export class InsightsComponent implements OnInit {
         },
         grid: {
           display: false
+        },
+        border: {
+          width: 6
         }
       }
     }
@@ -95,11 +102,19 @@ export class InsightsComponent implements OnInit {
   onFormChange() {
     const {iban, startDate, endDate, periodBin} = this.formData;
     if (iban && startDate && endDate && periodBin) {
+      const orange = getComputedStyle(document.documentElement).getPropertyValue('--primary-orange').trim();
+      const hoverColor = '#fff'; // or any contrasting color for hover
       this.dataService.getInsightsForAmountSpent(iban, startDate, endDate, periodBin).subscribe(
         (response) => {
           this.lineChartData = [
             {
               data: Object.values(response),
+              borderColor: orange,
+              backgroundColor: orange,
+              pointBackgroundColor: orange,
+              pointBorderColor: orange,
+              pointHoverBackgroundColor: hoverColor,
+              pointHoverBorderColor: orange,
               borderWidth: 3,
               pointRadius: 10,
               pointHoverRadius: 15,
@@ -121,6 +136,7 @@ export class InsightsComponent implements OnInit {
           console.error('Error fetching amounts', error);
         }
       );
+      this.fetchCategories();
     }
   }
 
@@ -153,5 +169,71 @@ export class InsightsComponent implements OnInit {
         type: type
       }
     });
+  }
+
+  fetchCategories() {
+    const { iban, startDate, endDate } = this.formData;
+    if (iban && startDate && endDate) {
+      this.dataService.getTransactionPerCategoryWithNoPeriod(iban, startDate, endDate).subscribe(
+        (response) => {
+          // Type assertion to fix the TS error
+          this.categories = Object.entries(response as { [category: string]: any[] }).map(
+            ([category, transactions]) => ({
+              name: category,
+              amount: (transactions as any[]).reduce((sum, t) => sum + t.amount, 0),
+              transactions: transactions as any[]
+            })
+          );
+        },
+        (error) => {
+          console.error('Error fetching categories', error);
+        }
+      );
+    }
+  }
+
+  categories: { name: string, amount: number, transactions: any[] }[] = [];
+
+  viewCategoryTransactions(category: any) {
+    this.router.navigate(['/category-transactions'], {
+      queryParams: {
+        iban: this.formData.iban,
+        category: category.name,
+        transactions: JSON.stringify(category.transactions)
+      }
+    });
+  }
+
+  getCategoryIcon(category: string): string {
+    const categoryIcons: { [key: string]: string } = {
+      Electricity: 'bi bi-lightning',
+      Gas: 'bi bi-fire',
+      Fuel: 'bi bi-fuel-pump',
+      Train: 'bi bi-train-front',
+      Bus: 'bi bi-bus-front',
+      Taxi: 'bi bi-taxi-front',
+      Clothes: 'bi bi-shirt',
+      Groceries: 'bi bi-basket',
+      Meats: 'bi bi-piggy-bank',
+      Vegetables: 'bi bi-leaf',
+      Fruits: 'bi bi-apple',
+      Dairy: 'bi bi-cup-straw',
+      Alcohol: 'bi bi-cup',
+      'Soft Drinks': 'bi bi-cup-soda',
+      'Paper products': 'bi bi-file-earmark-text',
+      'Plastic products': 'bi bi-box',
+      Electronics: 'bi bi-phone',
+      'Motor vehicles': 'bi bi-car-front',
+      Furniture: 'bi bi-house',
+      Banking: 'bi bi-bank',
+      Insurance: 'bi bi-shield-check',
+      Education: 'bi bi-book',
+      'Recreational Services': 'bi bi-controller',
+      Other: 'bi bi-person-badge-fill'
+    };
+    if (!category || !categoryIcons[category]) {
+      return categoryIcons['Other'];
+    }
+    return categoryIcons[category];
   }
 }

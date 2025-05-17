@@ -15,3 +15,13 @@
   list-style: none;
 }
 
+.period-list-container .btn-outline-primary {
+  --bs-btn-color: var(--primary-orange);
+  --bs-btn-border-color: var(--primary-orange);
+  --bs-btn-hover-bg: var(--primary-orange);
+  --bs-btn-hover-border-color: var(--primary-orange);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--primary-orange);
+  --bs-btn-active-border-color: var(--primary-orange);
+  --bs-btn-active-color: #fff;
+}

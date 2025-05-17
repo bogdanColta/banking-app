@@ -12,6 +12,7 @@ import {SuccessfulTransactionComponent} from './successful-transaction/successfu
 import {FootprintComponent} from './footprint/footprint.component';
 import {FootprintTransactionsComponent} from './footprint-transactions/footprint-transactions.component';
 import {IncomeTransactionsComponent} from './income-transactions/income-transactions.component';
+import {CategoryTransactionsComponent} from './category-transactions/category-transactions.component';
 
 export const routes: Routes = [
   {
@@ -70,5 +71,9 @@ export const routes: Routes = [
   {
     path: 'income-transactions',
     component: IncomeTransactionsComponent
+  },
+  {
+    path: 'category-transactions',
+    component: CategoryTransactionsComponent
   }
 ];

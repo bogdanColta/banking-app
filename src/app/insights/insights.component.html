@@ -40,7 +40,6 @@
       </div>
     </div>
   </form>
-
   <div class="card mt-3">
     <div class="card-body">
       <h5 class="card-title">Your Spending</h5>
@@ -69,6 +68,19 @@
             aria-valuemax="100"
           ></div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-scroll-list mt-3">
+    <div
+      class="category-box shadow-sm"
+      *ngFor="let category of categories"
+      (click)="viewCategoryTransactions(category)">
+      <div class="d-flex flex-column align-items-center">
+        <i [class]="getCategoryIcon(category.name) + ' mb-2 text-secondary'" style="font-size: 1.8rem;"></i>
+        <div class="category-name">{{ category.name }}</div>
+        <div class="category-amount">{{ category.amount | currency:'EUR':'symbol' }}</div>
       </div>
     </div>
   </div>

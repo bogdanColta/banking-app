@@ -69,7 +69,7 @@ svg {
 }
 
 button.transfer-btn, .btn.transfer-btn {
-  background-color: var(--secondary-blue) !important; /* Button background */
+  background-color: var(--primary-orange)  !important; /* Button background */
   color: white !important; /* Text and icon color */
   border: none;
   font-weight: bold;
@@ -88,7 +88,7 @@ button.transfer-btn i {
 }
 
 button.transfer-btn:hover, .btn.transfer-btn:hover {
-  background-color: var(--primary-orange) !important; /* Change background on hover */
+  background-color: var(--secondary-blue) !important; /* Change background on hover */
 }
 
 .custom-orange-button {

@@ -81,7 +81,11 @@ export class DataService {
   }
 
   getTransactionPerCategory(iban: string, startDate: string, endDate: string, periodBin: string): Observable<any> {
-    return this.http.get(this.url + 'transactions/transactionsByPeriodGroupedByCategory?iban=' + iban + '&startDate=' + startDate + '&endDate=' + endDate+ '&periodBin=' + periodBin);
+    return this.http.get(this.url + 'transactions/transactionsByPeriodGroupedByCategoryAndPeriod?iban=' + iban + '&startDate=' + startDate + '&endDate=' + endDate+ '&periodBin=' + periodBin);
+  }
+
+  getTransactionPerCategoryWithNoPeriod(iban: string, startDate: string, endDate: string): Observable<any> {
+    return this.http.get(this.url + 'transactions/transactionsByPeriodGroupedByCategory?iban=' + iban + '&startDate=' + startDate + '&endDate=' + endDate);
   }
 
   getInsightsInAndOutAmounts(iban: string, startDate: string, endDate: string): Observable<any> {
