@@ -68,27 +68,8 @@ svg {
   stroke: var(--secondary-blue);
 }
 
-button.transfer-btn, .btn.transfer-btn {
-  background-color: var(--primary-orange)  !important; /* Button background */
-  color: white !important; /* Text and icon color */
-  border: none;
-  font-weight: bold;
-  padding: 0;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%; /* Make it a circle */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
-}
-
 button.transfer-btn i {
-  color: white !important; /* Arrow color */
-}
-
-button.transfer-btn:hover, .btn.transfer-btn:hover {
-  background-color: var(--secondary-blue) !important; /* Change background on hover */
+  color: var(--primary-orange) !important; /* Arrow color */
 }
 
 .custom-orange-button {
@@ -162,3 +143,13 @@ button.transfer-btn:hover, .btn.transfer-btn:hover {
   margin-right: 0;
 }
 
+
+.exit-button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.exit-button:focus {
+  outline: none;
+  box-shadow: none;
+}

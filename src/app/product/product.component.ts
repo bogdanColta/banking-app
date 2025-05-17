@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
 import {NgForOf} from '@angular/common';
+import {AuthService} from '../auth-service/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-products',
   templateUrl: './product.component.html',
   imports: [
-    NgForOf
+    NgForOf,
   ],
   styleUrls: ['./product.component.css']
 })
@@ -21,10 +22,12 @@ export class ProductComponent {
     'fas fa-shield-alt'   // Insurances
   ];
 
-  constructor(private router: Router) {}
+  logout(): void {
+    console.log('User logged out');
+    this.authService.clearToken();
+    this.router.navigate(['/login']);
+  }
 
-  navigateToProduct(product: string): void {
-    const route = product.toLowerCase().replace(/ /g, '-');
-    this.router.navigate([`/products/${route}`]);
+  constructor(private authService: AuthService, private router: Router) {
   }
 }
