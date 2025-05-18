@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
-  products: string[] = ['Payments and Cards', 'Saving', 'Investing', 'Mortgage', 'Lending', 'Insurances'];
+  products: string[] = ['Payments and cards', 'Saving', 'Investing', 'Mortgage', 'Lending', 'Insurances'];
   icons: string[] = [
     'fas fa-credit-card', // Payments and Cards
     'fas fa-piggy-bank',  // Saving

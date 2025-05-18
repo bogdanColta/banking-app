@@ -66,6 +66,10 @@ export class IbanDetailsComponent implements OnInit {
     );
   }
 
+  compareDatesDesc = (a: {key: string}, b: {key: string}) => {
+    return new Date(b.key).getTime() - new Date(a.key).getTime();
+  };
+
   viewTransactionDetails(transaction: Transaction, iban: string): void {
     this.router.navigate(['/transaction-details', transaction.id], { queryParams: { iban } });
   }

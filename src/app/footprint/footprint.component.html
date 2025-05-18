@@ -3,7 +3,7 @@
     <h2 class="card-title mb-0">Carbon footprint</h2>
   </div>
 </div>
-<div class="container mt-4">
+<div class="container mt-4" style="padding-bottom: 80px">
   <div *ngIf="categoryData && Object.keys(categoryData).length > 0; else loading">
     <!-- Horizontal Scrollable Period List -->
     <div class="period-list-container mb-3">
@@ -25,7 +25,7 @@
         <li *ngFor="let category of Object.keys(categoryData[selectedPeriod])" class="list-group-item" (click)="navigateToTransactions(category)">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-              <i [ngClass]="getCategoryIcon(category)" class="me-2" style="font-size: 1.4rem;"></i>
+              <i [ngClass]="getCategoryIcon(category)" class="me-2" style="font-size: 1.4rem; color: var(--primary-orange);"></i>
               <h5 class="mb-1" style="font-size: 1.1rem;">{{ category }}</h5>
             </div>
             <div class="d-flex flex-column text-end" style="min-width: 80px;">

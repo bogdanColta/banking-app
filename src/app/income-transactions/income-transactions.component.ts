@@ -85,6 +85,10 @@ export class IncomeTransactionsComponent {
     );
   }
 
+  compareDatesDesc = (a: {key: string}, b: {key: string}) => {
+    return new Date(b.key).getTime() - new Date(a.key).getTime();
+  };
+
   getCategoryIcon(category: string): string {
     const categoryIcons: { [key: string]: string } = {
       Electricity: 'bi bi-lightning',

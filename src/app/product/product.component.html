@@ -11,15 +11,20 @@
     </button>
   </div>
 </div>
-<div class="container mt-3">
-  <div class="row">
-    <div class="col-md-6 col-lg-4 mb-3" *ngFor="let product of products; let i = index">
-      <div class="card shadow-sm h-100 d-flex flex-column justify-content-center align-items-center" style="cursor: pointer;">
-        <div class="card-body d-flex flex-row align-items-center w-100">
-          <i [class]="icons[i] + ' me-3'" style="font-size: 2rem; color: var(--primary-orange);"></i>
-          <h5 class="card-title mb-0">{{ product }}</h5>
-        </div>
-      </div>
-    </div>
+
+
+<div class="container mt-3" style="padding-bottom: 80px">
+  <div class="card-header mt-4" style="color: var(--primary-orange)">
+    <h5>Find what's right for you</h5>
+  </div>
+  <div class="card mt-2">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex align-items-center"
+          *ngFor="let product of products; let i = index">
+        <i [class]="icons[i]" style="font-size: 1.3rem; color: var(--primary-orange); margin-right: 0.7rem;"></i>
+        <span>{{ product }}</span>
+      </li>
+    </ul>
   </div>
 </div>
+

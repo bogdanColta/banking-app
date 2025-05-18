@@ -1,4 +1,4 @@
-<div class="header-card-full shadow-sm mb-0">
+<div class="header-card-full shadow-sm mb-0" style="padding-bottom: 80px">
   <div class="d-flex flex-column align-items-center mb-4">
     <div
       *ngIf="transaction.receiverIBAN === iban; else outgoing"
@@ -59,6 +59,18 @@
         <p><strong>To:</strong></p>
         <h5>{{ transaction.receiverName }}</h5>
         <h6>{{ transaction.receiverIBAN }}</h6>
+      </div>
+      <hr/>
+      <div class="mb-3">
+        <p><strong>Balance after transaction:</strong></p>
+        <h5>
+          <ng-container *ngIf="transaction.senderBalanceAfterTransaction !== null && transaction.senderBalanceAfterTransaction !== undefined; else receiverBalance">
+            {{ transaction.senderBalanceAfterTransaction | currency:'EUR':'symbol' }}
+          </ng-container>
+          <ng-template #receiverBalance>
+            {{ transaction.receiverBalanceAfterTransaction | currency:'EUR':'symbol' }}
+          </ng-template>
+        </h5>
       </div>
     </div>
   </div>

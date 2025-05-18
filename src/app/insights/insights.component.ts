@@ -183,7 +183,7 @@ export class InsightsComponent implements OnInit {
               amount: (transactions as any[]).reduce((sum, t) => sum + t.amount, 0),
               transactions: transactions as any[]
             })
-          );
+          ).sort((a, b) => b.amount - a.amount);
         },
         (error) => {
           console.error('Error fetching categories', error);

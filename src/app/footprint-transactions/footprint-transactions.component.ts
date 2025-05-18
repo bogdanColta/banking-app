@@ -68,15 +68,40 @@ export class FootprintTransactionsComponent implements OnInit {
     );
   }
 
-  parseDate(date: string): string {
-    const options: Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hourCycle: 'h23'
+  getCategoryIcon(category: string): string {
+    const categoryIcons: { [key: string]: string } = {
+      Electricity: 'bi bi-lightning',
+      Gas: 'bi bi-fire',
+      Fuel: 'bi bi-fuel-pump',
+      Train: 'bi bi-train-front',
+      Bus: 'bi bi-bus-front',
+      Taxi: 'bi bi-taxi-front',
+      Clothes: 'bi bi-shirt',
+      Groceries: 'bi bi-basket',
+      Meats: 'bi bi-piggy-bank',
+      Vegetables: 'bi bi-leaf',
+      Fruits: 'bi bi-apple',
+      Dairy: 'bi bi-cup-straw',
+      Alcohol: 'bi bi-cup',
+      'Soft Drinks': 'bi bi-cup-soda',
+      'Paper products': 'bi bi-file-earmark-text',
+      'Plastic products': 'bi bi-box',
+      Electronics: 'bi bi-phone',
+      'Motor vehicles': 'bi bi-car-front',
+      Furniture: 'bi bi-house',
+      Banking: 'bi bi-bank',
+      Insurance: 'bi bi-shield-check',
+      Education: 'bi bi-book',
+      'Recreational Services': 'bi bi-controller',
+      Other: 'bi bi-person-badge-fill'
     };
-    return new Date(date).toLocaleString(undefined, options);
+    if (!category || !categoryIcons[category]) {
+      return categoryIcons['Other'];
+    }
+    return categoryIcons[category];
   }
+
+  compareDatesDesc = (a: {key: string}, b: {key: string}) => {
+    return new Date(b.key).getTime() - new Date(a.key).getTime();
+  };
 }

@@ -10,7 +10,7 @@
     </button>
   </div>
 </div>
-<div class="container mt-3" style="padding-bottom: 90px">
+<div class="container mt-3" style="padding-bottom: 80px">
   <form>
     <div class="form-group mb-3">
       <label for="iban">IBAN</label>
@@ -28,7 +28,7 @@
         <input type="date" id="endDate" class="form-control" [(ngModel)]="formData.endDate" name="endDate" (ngModelChange)="onFormChange()" required/>
       </div>
     </div>
-    <div class="form-row mb-3">
+    <div class="form-row">
       <div class="form-group flex-fill">
         <label for="periodBin">Period</label>
         <select id="periodBin" class="form-control" [(ngModel)]="formData.periodBin" name="periodBin" (ngModelChange)="onFormChange()" required>
@@ -40,9 +40,9 @@
       </div>
     </div>
   </form>
-  <div class="card mt-3">
+  <h5 class="card-title mt-4" style="color: var(--primary-orange)">Your Spending</h5>
+  <div class="card mt-2">
     <div class="card-body">
-      <h5 class="card-title">Your Spending</h5>
       <div class="mb-3">
         <label class="form-label">In Amount: {{ inAmount | currency:'EUR':'symbol' }}</label>
         <div class="progress" (click)="redirectToIncomeTransactions('in')">
@@ -72,7 +72,8 @@
     </div>
   </div>
 
-  <div class="category-scroll-list mt-3">
+<h5 class="card-title mt-4" style="color: var(--primary-orange)">Top expenses</h5>
+  <div class="category-scroll-list mt-2">
     <div
       class="category-box shadow-sm"
       *ngFor="let category of categories"
@@ -84,12 +85,11 @@
       </div>
     </div>
   </div>
-
-  <div class="card mt-3">
+  <h5 class="card-title mt-4" style="color: var(--primary-orange)">Spending Progression</h5>
+  <div class="card mt-2">
     <div class="card-body">
-      <h5 class="card-title">Spending Progression</h5>
       <div class="d-flex justify-content-center align-items-center" style="height: 300px">
-        <div style="position: relative; width: 70%; height: 90%;">
+        <div style="position: relative; width: 80%; height: 90%;">
           <canvas baseChart
                   [datasets]="lineChartData"
                   [labels]="lineChartLabels"

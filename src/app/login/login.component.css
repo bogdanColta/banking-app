@@ -12,7 +12,7 @@
   gap: 1rem;
   justify-content: center;
   margin-bottom: 2rem;
-  margin-top: 17rem;
+  margin-top: 20rem;
   position: relative;
 }
 
@@ -73,13 +73,135 @@
 
 .error-message-top {
   position: absolute;
-  top: 15%;
+  top: 45%;
   left: 0;
   width: 100vw;
   text-align: center;
-  z-index: 9999;
+  z-index: 1000;
   color: #606060;
   background: #f5f6fa;
   font-weight: bold;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
 }
+.profile-select-center {
+  top: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.profile-icon {
+  font-size: 3rem;
+  color: var(--primary-orange);
+  margin-bottom: 0.5rem;
+}
+
+.profile-btn {
+  background: #fff !important;
+  color: var(--primary-orange) !important;
+  border: 2px solid var(--primary-orange) !important;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+}
+
+.profile-btn .arrow-down {
+  color: var(--primary-orange) !important;
+  transition: color 0.2s;
+}
+
+.profile-btn:hover, .profile-btn:focus {
+  background: var(--primary-orange) !important;
+  color: #fff !important;
+}
+
+.profile-btn:hover .arrow-down, .profile-btn:focus .arrow-down {
+  color: #fff !important;
+}
+
+.modal {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0,0,0,0.3);
+  z-index: 1050;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+}
+
+.modal-dialog {
+  margin: 0 auto 0 auto;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-modal-bottom {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  position: fixed !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1050;
+  background: rgba(0,0,0,0.3);
+  padding: 0;
+}
+
+.modal-dialog {
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.modal-content {
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.12);
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:focus {
+  background: var(--primary-orange) !important;
+  border-color: var(--primary-orange) !important;
+  color: #fff !important;
+}
+
+.list-group-item.active {
+  background-color: var(--primary-orange) !important;
+  border-color: var(--primary-orange) !important;
+  color: #fff !important;
+}
+
+.btn-primary:disabled {
+  background: #ffb366 !important;
+  border-color: #ffb366 !important;
+  color: #fff !important;
+}
+
+.arrow-down {
+  color: #fff;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.remove-profile-btn {
+  color: #fff;
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+

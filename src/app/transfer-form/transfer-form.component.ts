@@ -66,20 +66,20 @@ export class TransferFormComponent {
     if (this.transactionForm.valid) {
       this.dataService.postTransaction(this.transactionForm.value).subscribe(
         (response) => {
-          console.log('Data posted successfully', response);
+          console.log('Data posted successfully');
           this.router.navigate(['/successful-transaction']);
         },
         (error) => {
-          console.log(error);
-          console.error('Error posting data', error);
+          const errorMessage = error.error["Error Message"];
+          this.router.navigate(['/unsuccessful-transaction'], {
+            queryParams: {
+              error: errorMessage
+            }
+          });
         }
       );
     } else {
       console.log('Form is invalid');
     }
-  }
-
-  goBack(): void {
-    window.history.back();
   }
 }

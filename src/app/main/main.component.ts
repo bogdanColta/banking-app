@@ -15,6 +15,7 @@ import {AuthService} from '../auth-service/auth.service';
 })
 export class MainComponent implements OnInit {
   bankAccounts: any[] = [];
+  bankAccountName: Map<string, string> = new Map<string, string>();
 
   constructor(private dataService: DataService, private router: Router, private authService: AuthService) {
   }
@@ -24,6 +25,16 @@ export class MainComponent implements OnInit {
       (data) => {
         this.bankAccounts = data;
         console.log(this.bankAccounts);
+        for (let bankAccount of this.bankAccounts) {
+          this.dataService.getNameAccount(bankAccount.iban).subscribe(
+            (name) => {
+              this.bankAccountName.set(bankAccount.iban, name.name);
+            },
+            (error) => {
+              console.error('Error fetching account name:', error);
+            }
+          )
+        }
       },
       (error) => {
         console.error('Error fetching bank accounts:', error);

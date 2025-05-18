@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private tokenKey = 'authToken';
-  private usernameKey = 'username';
+  private usernameKey = 'usernames';
 
   private isLocalStorageAvailable(): boolean {
     try {
@@ -15,7 +15,7 @@ export class AuthService {
     }
   }
 
-  getUsername(): string | null {
+  getUsernames(): string | null {
     if (this.isLocalStorageAvailable()) {
       return localStorage.getItem(this.usernameKey) || null;
     }

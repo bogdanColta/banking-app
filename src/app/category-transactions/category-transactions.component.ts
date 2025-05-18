@@ -56,6 +56,10 @@ export class CategoryTransactionsComponent {
     }
   }
 
+  compareDatesDesc = (a: {key: string}, b: {key: string}) => {
+    return new Date(b.key).getTime() - new Date(a.key).getTime();
+  };
+
   groupTransactionsByDate(): void {
     this.groupedTransactions = groupBy(this.transactions, (transaction: Transaction) =>
       new Date(transaction.date).toDateString()

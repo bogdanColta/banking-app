@@ -1,4 +1,51 @@
 <div class="login-container d-flex flex-column align-items-center justify-content-center position-relative">
+  <div class="profile-select-center flex-column d-flex align-items-center">
+    <i class="bi bi-person-circle profile-icon"></i>
+    <button class="btn btn-light btn-sm rounded-pill px-3 py-1 profile-btn" style="color: #fff; font-weight: bold"
+            (click)="openProfileModal()">
+      {{ selectedUsername || 'Select profile' }}
+      <i class="bi bi-caret-down-fill arrow-down"></i>
+    </button>
+  </div>
+
+  <!-- Modal for profile selection -->
+  <div class="modal fade show custom-modal-bottom"
+       tabindex="-1"
+       [ngStyle]="{display: showProfileModal ? 'block' : 'none', background: 'rgba(0,0,0,0.3)'}"
+       *ngIf="showProfileModal"
+       (click)="onModalBackgroundClick($event)">
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Profile</h5>
+        </div>
+        <div class="modal-body">
+          <!-- In src/app/login/login.component.html -->
+          <ul class="list-group mb-3">
+            <li *ngFor="let user of usernames"
+                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                [class.active]="user === selectedUsername"
+                (click)="selectProfile(user)">
+              <span>{{ user }}</span>
+              <button type="button"
+                      class="btn btn-link btn-sm remove-profile-btn"
+                      (click)="removeUsername(user); $event.stopPropagation()"
+                      aria-label="Remove profile">
+                &times;
+              </button>
+            </li>
+          </ul>
+          <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="newUsername" placeholder="Add new profile" />
+          </div>
+        </div>
+        <div class="modal-footer flex-column">
+          <button class="btn btn-primary w-100 mb-2" (click)="addUsername()" [disabled]="!newUsername">Add profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="error-message-top" *ngIf="errorMessage">
     {{ errorMessage }}
   </div>
