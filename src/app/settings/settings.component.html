@@ -14,20 +14,20 @@
 
 <div class="container mt-3" style="padding-bottom: 80px">
   <div class="card p-3 shadow-sm d-flex flex-row align-items-center mb-3">
-    <i class="bi bi-file-earmark-person-fill me-3" style="font-size: 2.5rem; color: var(--primary-orange);"></i>
+    <i class="bi bi-file-earmark-person-fill me-3" style="font-size: 2.5rem; color: var(--secondary-blue);"></i>
     <div>
       <h3 class="mb-1">{{ userName }}</h3>
     </div>
   </div>
 
-  <div class="card-header mt-4" style="color: var(--primary-orange)">
+  <div class="card-header mt-4" style="color: var(--secondary-blue)">
     <h5>Arrange it yourself</h5>
   </div>
   <div class="card mt-2">
     <ul class="list-group list-group-flush">
       <li class="list-group-item d-flex align-items-center"
           *ngFor="let setting of settings; let i = index">
-        <i [class]="icons[i]" style="font-size: 1.3rem; color: var(--primary-orange); margin-right: 0.7rem;"></i>
+        <i [class]="icons[i]" style="font-size: 1.3rem; color: var(--secondary-blue); margin-right: 0.7rem;"></i>
         <span>{{ setting.label }}</span>
       </li>
     </ul>

@@ -20,12 +20,12 @@
   width: clamp(12px, 3vw, 20px);
   height: clamp(12px, 3vw, 20px);
   border-radius: 50%;
-  border: 2px solid var(--primary-orange);
+  border: 2px solid var(--secondary-blue);
   background: #fff;
   display: inline-block;
 }
 .dot.filled {
-  background: var(--primary-orange);
+  background: var(--secondary-blue);
 }
 
 .pin-pad {
@@ -58,7 +58,7 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: var(--primary-orange);
+  color: var(--secondary-blue);
 }
 
 .pin-btn.backspace {
@@ -97,25 +97,25 @@
 
 .profile-icon {
   font-size: 3rem;
-  color: var(--primary-orange);
+  color: var(--secondary-blue);
   margin-bottom: 0.5rem;
 }
 
 .profile-btn {
   background: #fff !important;
-  color: var(--primary-orange) !important;
-  border: 2px solid var(--primary-orange) !important;
+  color: var(--secondary-blue) !important;
+  border: 2px solid var(--secondary-blue) !important;
   font-weight: bold;
   transition: background 0.2s, color 0.2s;
 }
 
 .profile-btn .arrow-down {
-  color: var(--primary-orange) !important;
+  color: var(--secondary-blue) !important;
   transition: color 0.2s;
 }
 
 .profile-btn:hover, .profile-btn:focus {
-  background: var(--primary-orange) !important;
+  background: var(--secondary-blue) !important;
   color: #fff !important;
 }
 
@@ -170,14 +170,14 @@
 }
 
 .btn-primary, .btn-primary:active, .btn-primary:focus {
-  background: var(--primary-orange) !important;
-  border-color: var(--primary-orange) !important;
+  background: var(--secondary-blue) !important;
+  border-color: var(--secondary-blue) !important;
   color: #fff !important;
 }
 
 .list-group-item.active {
-  background-color: var(--primary-orange) !important;
-  border-color: var(--primary-orange) !important;
+  background-color: var(--secondary-blue) !important;
+  border-color: var(--secondary-blue) !important;
   color: #fff !important;
 }
 

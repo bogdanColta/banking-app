@@ -13,24 +13,24 @@
 <div class="container mt-3" style="padding-bottom: 80px">
   <form>
     <div class="form-group mb-3">
-      <label for="iban">IBAN</label>
+      <label for="iban" style="color: var(--secondary-blue)">IBAN</label>
       <select id="iban" class="form-control" [(ngModel)]="formData.iban" name="iban" (ngModelChange)="onFormChange()" required>
         <option *ngFor="let iban of ibans" [value]="iban">{{ iban }}</option>
       </select>
     </div>
     <div class="form-row d-flex justify-content-between mb-3">
       <div class="form-group flex-fill me-2">
-        <label for="startDate">Start Date</label>
+        <label for="startDate" style="color: var(--secondary-blue)">Start Date</label>
         <input type="date" id="startDate" class="form-control" [(ngModel)]="formData.startDate" name="startDate" (ngModelChange)="onFormChange()" required/>
       </div>
       <div class="form-group flex-fill me-2">
-        <label for="endDate">End Date</label>
+        <label for="endDate" style="color: var(--secondary-blue)">End Date</label>
         <input type="date" id="endDate" class="form-control" [(ngModel)]="formData.endDate" name="endDate" (ngModelChange)="onFormChange()" required/>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group flex-fill">
-        <label for="periodBin">Period</label>
+        <label for="periodBin" style="color: var(--secondary-blue)">Period</label>
         <select id="periodBin" class="form-control" [(ngModel)]="formData.periodBin" name="periodBin" (ngModelChange)="onFormChange()" required>
           <option value="day">Daily</option>
           <option value="week">Weekly</option>
@@ -40,7 +40,7 @@
       </div>
     </div>
   </form>
-  <h5 class="card-title mt-4" style="color: var(--primary-orange)">Your Spending</h5>
+  <h5 class="card-title mt-4" style="color: var(--secondary-blue)">Your Spending</h5>
   <div class="card mt-2">
     <div class="card-body">
       <div class="mb-3">
@@ -72,7 +72,7 @@
     </div>
   </div>
 
-<h5 class="card-title mt-4" style="color: var(--primary-orange)">Top expenses</h5>
+<h5 class="card-title mt-4" style="color: var(--secondary-blue)">Top expenses</h5>
   <div class="category-scroll-list mt-2">
     <div
       class="category-box shadow-sm"
@@ -85,7 +85,7 @@
       </div>
     </div>
   </div>
-  <h5 class="card-title mt-4" style="color: var(--primary-orange)">Spending Progression</h5>
+  <h5 class="card-title mt-4" style="color: var(--secondary-blue)">Spending Progression</h5>
   <div class="card mt-2">
     <div class="card-body">
       <div class="d-flex justify-content-center align-items-center" style="height: 300px">

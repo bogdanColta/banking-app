@@ -14,14 +14,14 @@
 
 
 <div class="container mt-3" style="padding-bottom: 80px">
-  <div class="card-header mt-4" style="color: var(--primary-orange)">
+  <div class="card-header mt-4" style="color: var(--secondary-blue)">
     <h5>Find what's right for you</h5>
   </div>
   <div class="card mt-2">
     <ul class="list-group list-group-flush">
       <li class="list-group-item d-flex align-items-center"
           *ngFor="let product of products; let i = index">
-        <i [class]="icons[i]" style="font-size: 1.3rem; color: var(--primary-orange); margin-right: 0.7rem;"></i>
+        <i [class]="icons[i]" style="font-size: 1.3rem; color: var(--secondary-blue); margin-right: 0.7rem;"></i>
         <span>{{ product }}</span>
       </li>
     </ul>

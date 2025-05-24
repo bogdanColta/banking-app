@@ -2,8 +2,8 @@
 
 /* Define a refined color palette */
 :root {
-  --primary-orange: #ff7f50; /* Coral orange */
-  --secondary-blue: #4682b4; /* Steel blue */
+  --primary-orange: #FF6700; /* Coral orange */
+  --secondary-blue: #000FAA; /* Steel blue */
   --text-dark: #333;
 }
 
@@ -37,7 +37,7 @@
 }
 
 body {
-  background-color: #f5f6fa;
+  background-color: #EFEFEF;
   font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -133,7 +133,7 @@ button.transfer-btn i {
 .header-card-full .card-title {
   font-size: 1.5rem;
   margin: 0;
-  color: black;
+  color: #000FAA;
 }
 
 .header-card-full h2 {

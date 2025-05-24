@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { Router } from '@angular/router';
 import {DataService} from '../data-service/data.service';
 import {CurrencyPipe, NgForOf, NgIf} from '@angular/common';
+import {IbanValidator} from '../data-service/iban.validator';
 
 @Component({
     selector: 'app-transfer-form',
@@ -27,7 +28,7 @@ export class TransferFormComponent {
     this.transactionForm = this.fb.group({
       amount: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$')]],
       senderIBAN: ['', [Validators.required]],
-      receiverIBAN: ['', [Validators.required, Validators.pattern('^[A-Z0-9]*$')]],
+      receiverIBAN: ['', [Validators.required, IbanValidator]],
       receiverName: ['', [Validators.required]]
     });
   }

@@ -44,7 +44,7 @@
           <label for="receiverName" class="form-label">Recipient:</label>
           <input id="receiverName" formControlName="receiverName" type="text" class="form-control" />
           <div *ngIf="transactionForm.get('receiverName')?.invalid && transactionForm.get('receiverName')?.touched" class="text-danger">
-            <small>Recipient is required.</small>
+            <small>Recipient is required</small>
           </div>
         </div>
 
@@ -53,8 +53,8 @@
           <input id="receiverIBAN" formControlName="receiverIBAN" type="text" class="form-control" />
           <div class="text-danger" style="min-height: 1.5em;">
             <ng-container *ngIf="transactionForm.get('receiverIBAN')?.invalid && transactionForm.get('receiverIBAN')?.touched">
-              <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['required']">Recipient IBAN is required.</small>
-              <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['pattern']">Recipient IBAN must be alphanumeric.</small>
+              <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['required']">Recipient IBAN is required</small>
+              <small *ngIf="transactionForm.get('receiverIBAN')?.errors?.['invalidIban']">Recipient IBAN is invalid</small>
             </ng-container>
           </div>
         </div>
