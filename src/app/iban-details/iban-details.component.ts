@@ -98,7 +98,7 @@ export class IbanDetailsComponent implements OnInit {
       Train: 'bi bi-train-front',
       Bus: 'bi bi-bus-front',
       Taxi: 'bi bi-taxi-front',
-      Clothes: 'bi bi-shirt',
+      Clothes: 'bi bi-bag',
       Groceries: 'bi bi-basket',
       Meats: 'bi bi-piggy-bank',
       Vegetables: 'bi bi-leaf',
